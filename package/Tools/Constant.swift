@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 class Constant: NSObject {
 
 }
