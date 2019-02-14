@@ -1,27 +1,24 @@
 //
-//  BaseWebViewController.swift
+//  BaseNavigationController.swift
 //  package
 //
-//  Created by Admin on 2019/2/12.
+//  Created by Admin on 2019/2/13.
 //  Copyright © 2019 Admin. All rights reserved.
 //
 
 import UIKit
-import SnapKit
-class BaseWebViewController: BaseViewController {
-    let webView : BaseWebView = BaseWebView.init()
+
+class BaseNavigationController: UINavigationController,UINavigationControllerDelegate {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(self.webView)
-        self.webView.backgroundColor = UIColor.red
-        self.webView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
 
         // Do any additional setup after loading the view.
     }
-
-
+    override var childViewControllerForStatusBarStyle: UIViewController?{
+        return self.topViewController
+    }
+   
     /*
     // MARK: - Navigation
 

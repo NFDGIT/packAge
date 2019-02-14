@@ -8,26 +8,49 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
-
+class BaseViewController: UIViewController,UINavigationControllerDelegate  {
+    var showNavi : Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.delegate = self
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = UIColor.phNaviTitle
+        self.navigationController?.navigationBar.barTintColor = UIColor.phNaviBg
+        
+        
+        self.view.backgroundColor = UIColor.phBgContent
+        self.setNeedsStatusBarAppearanceUpdate()
 
-        
-        
-        
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
+        
     }
-    */
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+  
+    
+    
+    
+    func initUI()  {}
+    func initNavi()  {}
 
+    override var preferredStatusBarStyle: UIStatusBarStyle
+    {
+        return .default
+    }
+}
+
+
+extension BaseViewController{
+    // MARK: 导航代理
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        navigationController.setNavigationBarHidden(!(viewController as! BaseViewController).showNavi, animated: true)
+    }
 }

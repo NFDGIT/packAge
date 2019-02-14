@@ -1,26 +1,33 @@
 //
-//  BaseWebViewController.swift
+//  LocationViewController.swift
 //  package
 //
-//  Created by Admin on 2019/2/12.
+//  Created by Admin on 2019/2/14.
 //  Copyright © 2019 Admin. All rights reserved.
 //
 
 import UIKit
-import SnapKit
-class BaseWebViewController: BaseViewController {
-    let webView : BaseWebView = BaseWebView.init()
+
+class LocationViewController: BaseViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(self.webView)
-        self.webView.backgroundColor = UIColor.red
-        self.webView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
 
+    
+        NetTool.post(url: "https://restapi.amap.com/v3/config/district",param: ["key":"a9370bed5a49fd3a9585ba1db78005da","subdistrict":"2"] ) { (res) -> (Void) in
+            if res.success
+            {
+                
+            }
+            else
+            {
+                
+            }
+            
+        }
         // Do any additional setup after loading the view.
     }
-
+    
 
     /*
     // MARK: - Navigation
