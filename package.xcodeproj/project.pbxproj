@@ -26,10 +26,17 @@
 		84881455221415E10001EBB0 /* BaseWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84881454221415E10001EBB0 /* BaseWebView.swift */; };
 		8488145722142D280001EBB0 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488145622142D280001EBB0 /* BaseTableViewController.swift */; };
 		8488145C221539410001EBB0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488145B221539410001EBB0 /* BaseTableViewCell.swift */; };
-		8488145E22153B340001EBB0 /* PHTopFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488145D22153B340001EBB0 /* PHTopFilterView.swift */; };
+		8488145E22153B340001EBB0 /* PHTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488145D22153B340001EBB0 /* PHTabbarView.swift */; };
 		848814612215602B0001EBB0 /* NetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848814602215602B0001EBB0 /* NetTool.swift */; };
 		84881463221566290001EBB0 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84881462221566290001EBB0 /* LocationViewController.swift */; };
 		848814652215670C0001EBB0 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848814642215670C0001EBB0 /* Request.swift */; };
+		8488146722164B610001EBB0 /* PHDistrictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488146622164B610001EBB0 /* PHDistrictView.swift */; };
+		8488146A221704660001EBB0 /* PHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84881469221704660001EBB0 /* PHTextField.swift */; };
+		8493FDF9221A4637006078A0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493FDF8221A4637006078A0 /* DetailViewController.swift */; };
+		8493FDFB221A46DC006078A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493FDFA221A46DC006078A0 /* LoginViewController.swift */; };
+		8493FDFD221A46EC006078A0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493FDFC221A46EC006078A0 /* RegisterViewController.swift */; };
+		8493FDFF221A552C006078A0 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493FDFE221A552C006078A0 /* MeViewController.swift */; };
+		8493FE01221A553C006078A0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493FE00221A553C006078A0 /* SettingViewController.swift */; };
 		FD4D1CF8BFB6CFEF313A1A28 /* Pods_packageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CBACCBD296435A614D54E2B /* Pods_packageTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,10 +85,17 @@
 		84881454221415E10001EBB0 /* BaseWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebView.swift; sourceTree = "<group>"; };
 		8488145622142D280001EBB0 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		8488145B221539410001EBB0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		8488145D22153B340001EBB0 /* PHTopFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHTopFilterView.swift; sourceTree = "<group>"; };
+		8488145D22153B340001EBB0 /* PHTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHTabbarView.swift; sourceTree = "<group>"; };
 		848814602215602B0001EBB0 /* NetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetTool.swift; sourceTree = "<group>"; };
 		84881462221566290001EBB0 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		848814642215670C0001EBB0 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		8488146622164B610001EBB0 /* PHDistrictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHDistrictView.swift; sourceTree = "<group>"; };
+		84881469221704660001EBB0 /* PHTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHTextField.swift; sourceTree = "<group>"; };
+		8493FDF8221A4637006078A0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8493FDFA221A46DC006078A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8493FDFC221A46EC006078A0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8493FDFE221A552C006078A0 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		8493FE00221A553C006078A0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		86B124059A4CFAEFBC9C7EA7 /* Pods-packageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packageUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-packageUITests/Pods-packageUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99BBC0894D3ECFBD903FBCEB /* Pods-packageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packageUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-packageUITests/Pods-packageUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B81F2C41B41ECFC4C2951B95 /* Pods-packageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packageTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-packageTests/Pods-packageTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,11 +214,13 @@
 		848814412212A7940001EBB0 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				8488145F2215600F0001EBB0 /* NET */,
-				8488145D22153B340001EBB0 /* PHTopFilterView.swift */,
-				848814452213B55B0001EBB0 /* ComponentExtension.swift */,
-				8488143A2212A6780001EBB0 /* Constant.swift */,
+				84881469221704660001EBB0 /* PHTextField.swift */,
+				8488145D22153B340001EBB0 /* PHTabbarView.swift */,
+				8488146622164B610001EBB0 /* PHDistrictView.swift */,
 				8488143C2212A68D0001EBB0 /* Base */,
+				8488146822164DE80001EBB0 /* Extension */,
+				8488145F2215600F0001EBB0 /* NET */,
+				8488143A2212A6780001EBB0 /* Constant.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -225,6 +241,11 @@
 				8488140B2212A64A0001EBB0 /* ViewController.swift */,
 				848814522214137D0001EBB0 /* H5ViewController.swift */,
 				84881462221566290001EBB0 /* LocationViewController.swift */,
+				8493FDF8221A4637006078A0 /* DetailViewController.swift */,
+				8493FDFA221A46DC006078A0 /* LoginViewController.swift */,
+				8493FDFC221A46EC006078A0 /* RegisterViewController.swift */,
+				8493FDFE221A552C006078A0 /* MeViewController.swift */,
+				8493FE00221A553C006078A0 /* SettingViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -251,6 +272,14 @@
 				848814642215670C0001EBB0 /* Request.swift */,
 			);
 			path = NET;
+			sourceTree = "<group>";
+		};
+		8488146822164DE80001EBB0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				848814452213B55B0001EBB0 /* ComponentExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		85804C28F256A55356A597D1 /* Frameworks */ = {
@@ -501,11 +530,18 @@
 				848814612215602B0001EBB0 /* NetTool.swift in Sources */,
 				8488143E2212A6AC0001EBB0 /* BaseViewController.swift in Sources */,
 				8488145C221539410001EBB0 /* BaseTableViewCell.swift in Sources */,
+				8493FDFB221A46DC006078A0 /* LoginViewController.swift in Sources */,
+				8493FDFD221A46EC006078A0 /* RegisterViewController.swift in Sources */,
 				8488140C2212A64A0001EBB0 /* ViewController.swift in Sources */,
 				848814122212A64A0001EBB0 /* package.xcdatamodeld in Sources */,
+				8493FDFF221A552C006078A0 /* MeViewController.swift in Sources */,
+				8493FDF9221A4637006078A0 /* DetailViewController.swift in Sources */,
 				8488140A2212A64A0001EBB0 /* AppDelegate.swift in Sources */,
+				8488146722164B610001EBB0 /* PHDistrictView.swift in Sources */,
 				8488143B2212A6780001EBB0 /* Constant.swift in Sources */,
-				8488145E22153B340001EBB0 /* PHTopFilterView.swift in Sources */,
+				8488146A221704660001EBB0 /* PHTextField.swift in Sources */,
+				8493FE01221A553C006078A0 /* SettingViewController.swift in Sources */,
+				8488145E22153B340001EBB0 /* PHTabbarView.swift in Sources */,
 				84881455221415E10001EBB0 /* BaseWebView.swift in Sources */,
 				8488145722142D280001EBB0 /* BaseTableViewController.swift in Sources */,
 				848814462213B55B0001EBB0 /* ComponentExtension.swift in Sources */,
@@ -685,7 +721,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9EXEV76R45;
 				INFOPLIST_FILE = package/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -703,7 +741,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9EXEV76R45;
 				INFOPLIST_FILE = package/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

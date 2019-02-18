@@ -12,7 +12,7 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate  {
     var showNavi : Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationController?.delegate = self
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = UIColor.phNaviTitle

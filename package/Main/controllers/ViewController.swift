@@ -23,36 +23,23 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
         self.initNavi()
         self.initUI()
 
-        self.hidesBottomBarWhenPushed = false
+
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     
     override func initNavi() {
         super.initNavi()
-        self.showNavi = false
+     
+        self.title = "首页"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "位置", style: UIBarButtonItemStyle.done, target: self, action: #selector(rightBtn))
+    
     }
+    
+    
+    
     override func initUI() {
         super.initUI()
-        
-        
-        let topView = PHTopFilterView.init()
-        topView.datas = [UIButton.init().initialize(normalTitle: "地区", selectedTitle: nil, normalImg: nil, selectedImg: nil, normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red, font: UIFont.phBig),
-                         UIButton.init().initialize(normalTitle: "租金", selectedTitle: nil, normalImg: nil, selectedImg: nil, normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red, font: UIFont.phBig),
-                         UIButton.init().initialize(normalTitle: "户型", selectedTitle: nil, normalImg: nil, selectedImg: nil, normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red, font: UIFont.phBig),
-                         UIButton.init().initialize(normalTitle: "筛选", selectedTitle: nil, normalImg: nil, selectedImg: nil, normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red, font: UIFont.phBig)
-        ]
-        self.view.addSubview(topView)
-        topView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Status_Height())
-            make.left.width.equalToSuperview()
-            make.height.equalTo(50)
-        }
-        topView.callBack = {index in
-
-        }
-        
-    
         
         let tableView : UITableView = UITableView.init(frame: CGRect.zero, style: UITableViewStyle.grouped)
         self.view.addSubview(tableView)
@@ -61,13 +48,16 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(topView.snp.bottom)
+            make.top.equalToSuperview()
             make.left.bottom.right.equalToSuperview()
         }
-        
+  
+  
     }
     
-    
+    @objc func rightBtn(){
+       self.navigationController?.pushViewController(LocationViewController(), animated: true)
+    }
     
 }
 
@@ -87,7 +77,7 @@ extension ViewController{
 //        webvc.hidesBottomBarWhenPushed = true
 //        self.navigationController?.pushViewController(webvc, animated: true)
         
-        self.navigationController?.pushViewController(LocationViewController(), animated: true)
+        self.navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     
 }

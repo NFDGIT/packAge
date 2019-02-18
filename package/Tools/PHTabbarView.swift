@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PHTopFilterView: UIView {
+class PHTabbarView: UIView {
     var callBack:((Int)->())?
     
     private var _selectedIndex : Int = 0
@@ -36,6 +36,7 @@ class PHTopFilterView: UIView {
 
     init() {
        super.init(frame: CGRect.zero)
+       self.backgroundColor = UIColor.white
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,10 +58,15 @@ class PHTopFilterView: UIView {
                 make.left.equalTo(temBtn == nil ? 0 : (temBtn?.snp.right)!)
             }
             temBtn = btn
-            btn.addTarget(events: .touchUpInside) { (sender) in
+            btn.phAddTarget(events: .touchUpInside) { (sender) in
                 self.selectedIndex = sender.tag - 100
-                self.callBack!(self.selectedIndex)
+                if (self.callBack != nil)
+                {
+                   self.callBack!(self.selectedIndex)
+                }
+                
             }
+            
         }
     }
     func refreshBtn() {

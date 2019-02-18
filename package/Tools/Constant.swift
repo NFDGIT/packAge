@@ -9,7 +9,7 @@
 import UIKit
 
 class Constant: NSObject {
-    
+
     
 }
 
@@ -18,13 +18,16 @@ class Constant: NSObject {
 /// - Parameter size: 适配前的尺寸
 /// - Returns: 适配后的尺寸
 func SCALE(size:CGFloat) -> CGFloat{
+//    return size * ((UIScreen.main.bounds.height > 568) ? UIScreen.main.bounds.height/568.00 : 1)
+//    return size * (UIScreen.main.bounds.height/568.00)
     return size
 }
 
 // MARK: - 颜色
 extension UIColor{
     
-    open class var phBgContent: UIColor { get{ return UIColor.lightGray} } //  背景颜色
+    
+    open class var phBgContent: UIColor { get{ return UIColor.init(red: 239/255.0, green: 239/255.0, blue: 244/255.0, alpha: 1)} } //  背景颜色
     
 //    字体颜色
     ///  黑色字体
@@ -49,11 +52,24 @@ func isIPhoneXType() -> Bool {
     guard #available(iOS 11.0, *) else {
         return false
     }
-    return UIApplication.shared.windows[0].safeAreaInsets != UIEdgeInsets.zero
+    return UIApplication.shared.windows[0].safeAreaInsets.bottom == 34
 }
 func Status_Height() -> CGFloat{//
     return isIPhoneXType() ? 44 : 20
 }
 func Bottom_Tool_Height() -> CGFloat{//
     return isIPhoneXType() ? 34 : 0
+}
+
+
+extension Constant{
+    static var isLogin : Bool{
+        get{
+            return UserDefaults.standard.bool(forKey: "isLogin")
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: "isLogin")
+        }
+    }
+    
 }

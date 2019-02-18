@@ -15,9 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        self.window?.rootViewController = UITabBarController.init(params:[("","","首页",ViewController()),("","","网页",H5ViewController())])
-        
+        self.switchRootVC()
+     
         return true
     }
 
@@ -92,3 +91,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+extension AppDelegate
+{
+    func switchRootVC()  {
+        if Constant.isLogin {
+            let tabbar = UITabBarController.init(params:[("","","首页",ViewController()),("","","网页",H5ViewController()),("","","我的",MeViewController())])
+            tabbar.custom()
+            self.window?.rootViewController = tabbar
+        }
+        else
+        {
+            self.window?.rootViewController = LoginViewController()
+        }
+        
+        
+    }
+    
+}

@@ -20,13 +20,14 @@ class BaseTableViewCell: UITableViewCell {
     
     
     func initUI()  {
-        let btn = UIButton().initialize(normalTitle: "hello ", selectedTitle: nil, normalImg: nil, selectedImg: nil, normalTextColor: UIColor.red, selectedTextColor: nil, font: nil)
+        let btn = UIButton.init(normalTitle: "hello ", selectedTitle: nil, normalImg: nil, selectedImg: nil, normalTextColor: UIColor.red, selectedTextColor: nil, font: nil)
         self.addSubview(btn)
         btn.isUserInteractionEnabled = false
         btn.snp.makeConstraints { (make) in
             make.left.top.right.bottom.equalToSuperview()
             make.height.equalTo(100)
         }
+     
     }
 
 
