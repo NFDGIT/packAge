@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Toast_Swift
+
 
 class LoginViewController: BaseViewController {
 
@@ -18,6 +20,7 @@ class LoginViewController: BaseViewController {
     }
     override func initNavi() {
         super.initNavi()
+        self.navigationItem.title = "登录"
     }
     override func initUI() {
         super.initUI()
@@ -26,8 +29,9 @@ class LoginViewController: BaseViewController {
         let items : [(leftImg:UIImage?,placeHolder:String)] = [(nil,"请输入用户名"),(nil,"请输入密码")]
         var temTf : PHTextField?
         
-        for item in items {
+        for (index,item) in items.enumerated() {
             let tf : PHTextField = PHTextField.init(placeHolder: item.placeHolder)
+            tf.tag = 100 + index
             self.view.addSubview(tf)
             
             
@@ -49,20 +53,65 @@ class LoginViewController: BaseViewController {
         }
         
         
+
+        
+        
+        
         let submitBtn : UIButton = UIButton.init(normalTitle: "登录", normalTextColor: UIColor.white, font: UIFont.phBig)
         submitBtn.phView(backGroundColor: UIColor.red)
         self.view.addSubview(submitBtn)
         submitBtn.snp.makeConstraints { (make) in
-            make.top.equalTo((temTf?.snp.bottom)!).offset(50)
+            make.top.equalTo((temTf!.snp.bottom)).offset(50)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.height.equalTo(50)
         }
         submitBtn.phAddTarget(events: .touchUpInside) { (sender) in
-            Constant.isLogin = true;
-            (UIApplication.shared.delegate as! AppDelegate).switchRootVC()
+            
+            let tfName : PHTextField = self.view.viewWithTag(100) as! PHTextField
+            let tfPwd  : PHTextField = self.view.viewWithTag(101) as! PHTextField
+  
+            
+            if (tfName.text?.count)! <= 0 {
+                self.view.makeToast("手机号不能为空",position:.center)
+                return
+            }
+            if (tfPwd.text?.count)! <= 0{
+                self.view.makeToast("密码不能为空",position:.center)
+                return
+            }
+            
+
+            
+            Request.login(userName: tfName.text!, password: tfPwd.text!, response: { (success, msg, data) -> (Void) in
+                print("\(msg)")
+                if success {
+                    PHConstant.isLogin = true;
+                    (UIApplication.shared.delegate as! AppDelegate).switchRootVC()
+                }
+            })
+            
+    
+        }
+        
+        
+        
+        let rigisterBtn : UIButton = UIButton.init(normalTitle: "注册", normalTextColor: UIColor.white, font: UIFont.phBig)
+        rigisterBtn.phView(backGroundColor: UIColor.red)
+        self.view.addSubview(rigisterBtn)
+        rigisterBtn.snp.makeConstraints { (make) in
+            make.top.equalTo((submitBtn.snp.bottom)).offset(50)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.height.equalTo(50)
+        }
+        rigisterBtn.phAddTarget(events: .touchUpInside) { (sender) in
+            
+            self.navigationController?.pushViewController(RegisterViewController(), animated: true)
+
         }
     }
+    
     
 
     /*

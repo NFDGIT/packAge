@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MeViewController: BaseViewController {
     override init() {
@@ -21,7 +22,7 @@ class MeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initNavi()
-
+        self.initUI()
         // Do any additional setup after loading the view.
     }
     override func initNavi() {
@@ -32,6 +33,12 @@ class MeViewController: BaseViewController {
         
     }
 
+    override func initUI() {
+        super.initUI()
+ 
+        
+
+    }
     /*
     // MARK: - Navigation
 

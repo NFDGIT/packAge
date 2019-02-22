@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Constant: NSObject {
+class PHConstant: NSObject {
 
     
 }
@@ -62,7 +62,7 @@ func Bottom_Tool_Height() -> CGFloat{//
 }
 
 
-extension Constant{
+extension PHConstant{
     static var isLogin : Bool{
         get{
             return UserDefaults.standard.bool(forKey: "isLogin")

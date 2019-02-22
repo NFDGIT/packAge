@@ -30,7 +30,7 @@ class SettingViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-50)
         }
         logoutBtn.phAddTarget(events: .touchUpInside) { (sender) in
-            Constant.isLogin = false
+            PHConstant.isLogin = false
             (UIApplication.shared.delegate as! AppDelegate).switchRootVC()
         }
         

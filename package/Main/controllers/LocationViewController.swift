@@ -15,23 +15,42 @@ class LocationViewController: BaseViewController {
         
         let districtView : PHDistrictView = PHDistrictView.init(frame: CGRect.zero)
         
-        let top = PHTabbarView.init()
-        self.view.addSubview(top)
-        top.snp.makeConstraints { (make) in
+        
+        let itemvalues : [(title:String,url:String)] = [("list",""),("collect","")]
+        let layoutView = PHLayoutView.init()
+        
+        self.view.addSubview(layoutView)
+        layoutView.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(50)
         }
-        top.datas = [UIButton.init(normalTitle: "list", normalTextColor: UIColor.phBlackText, font: UIFont.phBig),UIButton.init(normalTitle: "collect", normalTextColor: UIColor.phBlackText, font: UIFont.phBig)]
-        top.callBack = { index in
+        layoutView.layout.type = .table
+        layoutView.layout.direction = .horizontal
+        
+        layoutView.numberOfCell = {
+            return itemvalues.count
+        }
+        layoutView.cellForIndex = {index in
+            let item = itemvalues[index]
+            let btn = UIButton.init(normalTitle: item.title, normalImg:UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText , font: UIFont.phMiddle)
+            return btn
+        }
+        layoutView.reload()
+        layoutView.selectedCell = {index in
             districtView.setType(type: index == 0 ? .list : .collection)
         }
         
+        for item in layoutView.subviews {
+            (item as! UIButton).phImagePosition(at: .right, space: SCALE(size: 5))
+        }
+        
+
         
 
         self.view.addSubview(districtView)
         districtView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.top.equalTo(top.snp.bottom)
+            make.top.equalTo(layoutView.snp.bottom)
         }
   
 

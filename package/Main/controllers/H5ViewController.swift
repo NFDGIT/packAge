@@ -29,38 +29,52 @@ class H5ViewController: BaseViewController {
         
         self.showNavi = false
         
-        
-        //
-        let topView = PHTabbarView.init()
-        let btn = UIButton.init(normalTitle: "区域", normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
-        let btn1 = UIButton.init(normalTitle: "租金",  normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
-        let btn2 = UIButton.init(normalTitle: "户型",  normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
-        let btn3 = UIButton.init(normalTitle: "筛选",  normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
-        
-        topView.datas = [btn,
-                         btn1,
-                         btn2,
-                         btn3
-        ]
-        self.view.addSubview(topView)
-        topView.snp.makeConstraints { (make) in
+        let layoutView = PHLayoutView.init()
+        self.view.addSubview(layoutView)
+        layoutView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(Status_Height())
             make.left.width.equalToSuperview()
             make.height.equalTo(40)
         }
-        topView.callBack = {index in
-            
+        layoutView.numberOfCell = {
+            return 4
         }
-        for (index,item) in (topView.datas?.enumerated())! {
-            item.phImagePosition(at: index % 2 == 0 ? .left : .right, space: 10)
+        layoutView.cellForIndex = {index in
+            let btn = UIButton.init(normalTitle: "区域", normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
+            return btn
         }
+        
+        //
+//        let topView = PHTabbarView.init()
+//        let btn = UIButton.init(normalTitle: "区域", normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
+//        let btn1 = UIButton.init(normalTitle: "租金",  normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
+//        let btn2 = UIButton.init(normalTitle: "户型",  normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
+//        let btn3 = UIButton.init(normalTitle: "筛选",  normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phMiddle)
+//
+//        topView.datas = [btn,
+//                         btn1,
+//                         btn2,
+//                         btn3
+//        ]
+//        self.view.addSubview(topView)
+//        topView.snp.makeConstraints { (make) in
+//            make.top.equalToSuperview().offset(Status_Height())
+//            make.left.width.equalToSuperview()
+//            make.height.equalTo(40)
+//        }
+//        topView.callBack = {index in
+//
+//        }
+//        for (index,item) in (topView.datas?.enumerated())! {
+//            item.phImagePosition(at: index % 2 == 0 ? .left : .right, space: 10)
+//        }
         
         
         let webView : BaseWebView = BaseWebView.init()
         self.view.addSubview(webView)
         webView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.top.equalTo(topView.snp.bottom)
+            make.top.equalTo(layoutView.snp.bottom)
         }
 
         webView.load(URLRequest.init(url: URL.init(string: "https://www.baidu.com")!))

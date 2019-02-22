@@ -13,15 +13,17 @@ class ComponentExtension: NSObject {
 
 }
 struct ComponentAssociatedKeys {
+    
+
     static var tabbarItemsKey: String = "tabbarItemsKey"
     static var buttonEventCallBackKey: String = "buttonEventCallBackKey"
-    static var UITableViewCellIndexPathKey: String = "UITableViewCellIndexPathKey"
 
+    static var UITableViewDatasKey: String = "UITableViewDatasKey"
+    static var UITableViewCellIndexPathKey: String = "UITableViewCellIndexPathKey"
+    
     static var UITextFieldMarginKey: String = "UITextFieldMarginKey"
     static var UITextFieldSpaceKey: String = "UITextFieldSpaceKey"
 
-    
-    
 }
 extension UIViewController{
     
@@ -61,35 +63,35 @@ extension UITabBarController{//
         self.viewControllers = (vcs as! [UIViewController])
     }
     func custom()  {
-        let customTabbar : PHTabbarView = PHTabbarView.init()
-        self.tabBar.addSubview(customTabbar)
-        customTabbar.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-Bottom_Tool_Height())
-        }
-    
-        let temDatas  = NSMutableArray.init()
-        for item in self.tabbarItems! {
-            
-            let btn : UIButton = UIButton.init(normalTitle: item.title, normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phSmall)
-            temDatas.add(btn)
-            
-    
-        }
-        
-        
-        customTabbar.datas = (temDatas as! [UIButton])
-        for (index,item) in (customTabbar.datas?.enumerated())! {
-            item.phImagePosition(at: index % 2 == 0 ? .top : .bottom, space: SCALE(size: 5))
-        }
-        
-        customTabbar.callBack = { index in
-            self.selectedIndex = index
-        }
-        
-        
+//        let customTabbar : PHTabbarView = PHTabbarView.init()
+//        self.tabBar.addSubview(customTabbar)
+//        customTabbar.snp.makeConstraints { (make) in
+//            make.left.top.right.equalToSuperview()
+//            make.bottom.equalToSuperview().offset(-Bottom_Tool_Height())
+//        }
+//
+//        let temDatas  = NSMutableArray.init()
+//        for item in self.tabbarItems! {
+//
+//            let btn : UIButton = UIButton.init(normalTitle: item.title, normalImg: UIImage.init(named: "未选中"), selectedImg: UIImage.init(named: "选中"), normalTextColor: UIColor.phBlackText, selectedTextColor: UIColor.red,normalBgImg:UIImage.phInit(color: UIColor.white),selectedBgImg:UIImage.phInit(color: UIColor.phBgContent),font: UIFont.phSmall)
+//            temDatas.add(btn)
+//
+//
+//        }
+//
+//
+//        customTabbar.datas = (temDatas as! [UIButton])
+//        for (index,item) in (customTabbar.datas?.enumerated())! {
+//            item.phImagePosition(at: index % 2 == 0 ? .top : .bottom, space: SCALE(size: 5))
+//        }
+//
+//        customTabbar.callBack = { index in
+//            self.selectedIndex = index
+//        }
+//
+//
     }
-    
+
     
 }
 
@@ -218,7 +220,20 @@ extension UIView{
     }
 }
 
-
+extension UITableView {
+    var datas: Array<Any>{
+        get{
+            let value = objc_getAssociatedObject(self, &ComponentAssociatedKeys.UITableViewDatasKey)
+            if  (value != nil) {
+                return value as! Array<Any>
+            }
+            return  Array.init()
+        }
+        set{
+            objc_setAssociatedObject(self, &ComponentAssociatedKeys.UITableViewDatasKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
 extension UITableViewCell{
     var indexPath: IndexPath? {
         get {
@@ -228,8 +243,6 @@ extension UITableViewCell{
             objc_setAssociatedObject(self, &ComponentAssociatedKeys.UITableViewCellIndexPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
-    
 }
 
 extension UIImage{
@@ -253,41 +266,20 @@ extension UIImage{
         return image!
     }
     
-    
-}
-extension UITextField{
-//    var space : CGFloat {
-//        get {
-//            return (objc_getAssociatedObject(self, &ComponentAssociatedKeys.UITextFieldSpaceKey) as! CGFloat)
-//        }
-//        set {
-//            objc_setAssociatedObject(self, &ComponentAssociatedKeys.UITextFieldSpaceKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//        }
-//    }
-//    
-//    var margin : CGFloat {
-//        get {
-//            return (objc_getAssociatedObject(self, &ComponentAssociatedKeys.UITextFieldMarginKey) as! CGFloat)
-//        }
-//        set {
-//            objc_setAssociatedObject(self, &ComponentAssociatedKeys.UITextFieldMarginKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//        }
-//    }
-//    
-//    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-//        var rect = super.leftViewRect(forBounds: bounds)
-//        rect.origin.x += margin
-//        return rect
-//    }
-//    override func textRect(forBounds bounds: CGRect) -> CGRect {
-//        let x : CGFloat = (self.leftView?.frame.maxX) ?? 0 + space
-//        
-//        return CGRect.init(x: x, y: bounds.origin.y, width:(self.rightView?.frame.minX) ?? self.frame.width - x - space,  height: bounds.size.height)
-//    }
-//    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-//        let x : CGFloat = (self.leftView?.frame.maxX) ?? 0 + space
-//        
-//        return CGRect.init(x: x, y: bounds.origin.y, width:(self.rightView?.frame.minX) ?? self.frame.width - x - space,  height: bounds.size.height)
-//    }
 }
 
+extension WKWebView{
+    static func phInit()  -> WKWebView{
+    
+        let config : WKWebViewConfiguration = WKWebViewConfiguration()
+        config.userContentController = WKUserContentController.init()
+        
+        let preferences : WKPreferences = WKPreferences.init()
+        preferences.javaScriptCanOpenWindowsAutomatically = true
+        //        preferences.minimumFontSize = 30
+        config.preferences = preferences
+    
+
+        return WKWebView.init(frame: CGRect.zero, configuration: config)
+    }
+}

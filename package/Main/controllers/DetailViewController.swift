@@ -23,6 +23,9 @@ class DetailViewController: BaseViewController {
     }
     override func initUI() {
         super.initUI()
+        
+ 
+    
     }
     
 

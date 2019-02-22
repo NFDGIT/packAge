@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.switchRootVC()
+        self.setup()
      
         return true
     }
@@ -41,11 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+
     }
 
     // MARK: - Core Data stack
 
+    @available(iOS 10.0, *)
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -75,19 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data Saving support
 
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
+
 
 }
 
@@ -95,16 +86,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate
 {
     func switchRootVC()  {
-        if Constant.isLogin {
-            let tabbar = UITabBarController.init(params:[("","","首页",ViewController()),("","","网页",H5ViewController()),("","","我的",MeViewController())])
-            tabbar.custom()
+        if PHConstant.isLogin {
+            let tabbar = UITabBarController.init(params:[("","","首页",ViewController()),("","","找司仪",FindViewController()),("","","我的",MeViewController())])
             self.window?.rootViewController = tabbar
         }
         else
         {
-            self.window?.rootViewController = LoginViewController()
+            let navi = BaseNavigationController.init(rootViewController: LoginViewController())
+            self.window?.rootViewController = navi
         }
         
+        
+    }
+    func setup()  {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
     }
     
