@@ -53,4 +53,10 @@ extension BaseViewController{
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         navigationController.setNavigationBarHidden(!(viewController as! BaseViewController).showNavi, animated: true)
     }
+    func dial(phone:String) {
+        let callWebview =   UIWebView()
+        callWebview.loadRequest(NSURLRequest(url: URL(string: "tel:\(phone)")!) as URLRequest)
+        self.view.addSubview(callWebview)
+    }
+
 }

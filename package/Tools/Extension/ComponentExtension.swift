@@ -31,9 +31,9 @@ extension UIViewController{
 // tabbar  的拓展
 extension UITabBarController{//
 
-     var tabbarItems: [(normalImg:String,selectedImg:String,title:String,controller:BaseViewController)]? {
+     var tabbarItems: [(normalImg:String,selectedImg:String,title:String,normalTextColor:UIColor?,selectedTextColor:UIColor?,controller:BaseViewController)]? {
         get {
-            let items = objc_getAssociatedObject(self, &ComponentAssociatedKeys.tabbarItemsKey) as? [(normalImg:String,selectedImg:String,title:String,controller:BaseViewController)]
+            let items = objc_getAssociatedObject(self, &ComponentAssociatedKeys.tabbarItemsKey) as? [(normalImg:String,selectedImg:String,title:String,normalTextColor:UIColor?,selectedTextColor:UIColor?,controller:BaseViewController)]
             return items
         }
         set {
@@ -41,7 +41,7 @@ extension UITabBarController{//
         }
     }
     
-    convenience  init(params:[(normalImg:String,selectedImg:String,title:String,controller:BaseViewController)]?) {
+    convenience  init(params:[(normalImg:String,selectedImg:String,title:String,normalTextColor:UIColor?,selectedTextColor:UIColor?,controller:BaseViewController)]?) {
         self.init()
 
         if params != nil {
@@ -55,8 +55,13 @@ extension UITabBarController{//
             let navi : BaseNavigationController = BaseNavigationController.init(rootViewController: controller)
         
             navi.tabBarItem.title = item.title
-            navi.tabBarItem.image = UIImage.init(named: item.normalImg)
-            navi.tabBarItem.selectedImage = UIImage.init(named: item.selectedImg)
+            navi.tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:item.normalTextColor as Any], for: .normal)
+            navi.tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:item.selectedTextColor as Any], for: .selected)
+            
+            navi.tabBarItem.image = UIImage.init(named: item.normalImg)?.withRenderingMode(.alwaysOriginal)
+        
+            
+            navi.tabBarItem.selectedImage = UIImage.init(named: item.selectedImg)?.withRenderingMode(.alwaysOriginal)
     
             vcs.add(navi)
         }
@@ -97,13 +102,13 @@ extension UITabBarController{//
 
 extension UIButton{
     // MARK: UIButton的初始化方法
-     convenience  init(normalTitle:String,selectedTitle:String? = nil,normalImg:UIImage? = nil,selectedImg:UIImage? = nil,normalTextColor:UIColor?,selectedTextColor:UIColor? = nil,normalBgImg:UIImage? = nil,selectedBgImg:UIImage? = nil,font:UIFont?)  {
+     convenience  init(normalTitle:String?=nil,selectedTitle:String? = nil,normalImg:UIImage? = nil,selectedImg:UIImage? = nil,normalTextColor:UIColor?=nil,selectedTextColor:UIColor? = nil,normalBgImg:UIImage? = nil,selectedBgImg:UIImage? = nil,font:UIFont?=nil)  {
         self.init()
         
         self.phInitialize(normalTitle: normalTitle, selectedTitle: selectedTitle, normalImg: normalImg, selectedImg: selectedImg, normalTextColor: normalTextColor, selectedTextColor: selectedTextColor,normalBgImg: normalBgImg,selectedBgImg: selectedBgImg, font: font)
     }
     // MARK: UIButton的一些常用参数的初始化
-    func  phInitialize(normalTitle:String,selectedTitle:String? = nil,normalImg:UIImage? = nil,selectedImg:UIImage? = nil,normalTextColor:UIColor?,selectedTextColor:UIColor? = nil,normalBgImg:UIImage? = nil,selectedBgImg:UIImage? = nil,font:UIFont?) {
+    func  phInitialize(normalTitle:String? = nil,selectedTitle:String? = nil,normalImg:UIImage? = nil,selectedImg:UIImage? = nil,normalTextColor:UIColor?=nil,selectedTextColor:UIColor? = nil,normalBgImg:UIImage? = nil,selectedBgImg:UIImage? = nil,font:UIFont?=nil) {
 
         self.setTitle(normalTitle, for: .normal)
         self.setImage(normalImg, for: .normal)

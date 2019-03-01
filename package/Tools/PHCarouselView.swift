@@ -35,7 +35,10 @@ class PHCarouselView: UIView ,UIScrollViewDelegate{
     private var rightView : UIView?
     private var timer : Timer?
 
-    
+    convenience init() {
+        self.init(direction: .horizontal)
+  
+    }
     
     init(direction scrollDirection:PHCarouselViewDirection) {
         super.init(frame: CGRect.zero)
@@ -86,7 +89,11 @@ class PHCarouselView: UIView ,UIScrollViewDelegate{
 
             }
             if i == 0 {leftView = view}
-            if i == 1 {middleView = view}
+            if i == 1 {middleView = view
+                let tap = UITapGestureRecognizer.init(target: self, action: #selector(selectCell))
+                middleView?.addGestureRecognizer(tap)
+                
+            }
             if i == 2 {rightView = view}
         }
         
@@ -108,10 +115,25 @@ class PHCarouselView: UIView ,UIScrollViewDelegate{
             }
         }
         
-        let middleItem : UIView =  self.cellForIndex!(getValidPage(page: currentPage))
-        let rightItem : UIView =   self.cellForIndex!(getValidPage(page: currentPage+1))
-        let leftItem : UIView =    self.cellForIndex!(getValidPage(page: currentPage-1))
+        
+        var middleItem : UIView  = UIView.init()
 
+
+        var rightItem : UIView =  UIView.init()
+
+        var leftItem : UIView =  UIView.init()
+   
+        if self.numberCell!() != 0{
+            middleItem = self.cellForIndex!(getValidPage(page: currentPage))
+            rightItem = self.cellForIndex!(getValidPage(page: currentPage+1))
+            leftItem = self.cellForIndex!(getValidPage(page: currentPage-1))
+        }
+        
+        
+        middleItem.isUserInteractionEnabled = false
+        rightItem.isUserInteractionEnabled = false
+        leftItem.isUserInteractionEnabled = false
+        
         leftView!.addSubview(leftItem)
         leftItem.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -149,7 +171,7 @@ class PHCarouselView: UIView ,UIScrollViewDelegate{
             // Fallback on earlier versions
         }
     }
-
+    
     /// 结束自动滚动
     func stopAutoScroll()  {
         timer?.invalidate()
@@ -187,7 +209,11 @@ class PHCarouselView: UIView ,UIScrollViewDelegate{
         if page < 0 {validPage = self.numberCell!() - 1}
         return validPage
     }
-    
+    @objc func selectCell() {
+        if (selectedCell != nil)  {
+            selectedCell!(currentPage)
+        }
+    }
     
     
     

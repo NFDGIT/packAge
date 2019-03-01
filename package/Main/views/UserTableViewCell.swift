@@ -27,8 +27,8 @@ class UserTableViewCell: UITableViewCell {
     let labelDesc : UILabel  = UILabel.init()
     let btnPraise : UIButton = UIButton.init()
     
-    var _model : UserInfo?
-    var  model : UserInfo?{
+    var _model : GoodsInfo?
+    var  model : GoodsInfo?{
         set{
             _model = newValue
             self.refreshUI()

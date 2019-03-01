@@ -18,6 +18,8 @@ class PHLayoutView: UIView {
     var selectedCell:((Int)->())?
     /// 每个单元的内容
     var cellForIndex:((Int)->(UIView))?
+    /// 每个单元的高度
+    var heightOfCell:((Int)->(Double))?
    
     
     init() {
@@ -57,7 +59,7 @@ class PHLayoutView: UIView {
                 }
             }
             
-            
+            // 平均分为某些份
             self.addSubview(view)
             view.snp.makeConstraints { (make) in
                 if self.layout.direction == .horizontal {
@@ -83,6 +85,17 @@ class PHLayoutView: UIView {
             
             let view = self.cellForIndex!(index)
             
+            if view.isKind(of: UIButton.classForCoder())
+            {
+                (view as! UIButton).phAddTarget(events: .touchUpInside) { (sender) in
+                    if self.selectedCell != nil
+                    {
+                        self.selectedCell!(index)
+                    }
+                }
+            }
+            
+            
             self.addSubview(view)
             
             let column = index  % self.layout.column
@@ -92,7 +105,8 @@ class PHLayoutView: UIView {
                 make.left.equalTo(leftTem == nil ? 0 : (leftTem?.snp.right)!)
                 make.top.equalTo(topTem == nil ? 0 : ((topTem?.snp.bottom)!))
                 make.width.equalToSuperview().dividedBy(self.layout.column)
-                make.height.equalTo(view.snp.width)
+       
+                make.height.equalTo((self.heightOfCell != nil) ? self.heightOfCell!(index) : view.snp.width)
                 
                 leftTem = view
                 if column == self.layout.column-1 {leftTem = nil}

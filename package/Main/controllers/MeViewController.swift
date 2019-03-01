@@ -29,14 +29,97 @@ class MeViewController: BaseViewController {
         super.initNavi()
         
         self.title = "我的"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "设置", style: UIBarButtonItemStyle.done, target: self, action: #selector(setBtnClick))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "设置", style: UIBarButtonItemStyle.done, target: self, action: #selector(setBtnClick))
         
     }
 
     override func initUI() {
         super.initUI()
- 
+        let itemValues : [(String)] = [("清除缓存"),("去评价"),("关于我们")]
         
+        
+        var temView : UIView?
+        for (index,itemvalue) in itemValues.enumerated() {
+            let btn : UIButton = UIButton.init(normalTitle: itemvalue, normalTextColor: UIColor.phBlackText, font: UIFont.phMiddle)
+            btn.contentHorizontalAlignment = .left
+            btn.phImagePosition(at: .left, space: SCALE(size: 20))
+            self.view.addSubview(btn)
+            btn.backgroundColor = UIColor.white
+            
+            btn.snp.makeConstraints { (make) in
+                make.top.equalTo(temView == nil ? SCALE(size: 100) : (temView?.snp.bottom)!).offset(10)
+                make.left.right.equalToSuperview()
+                make.height.equalTo(SCALE(size: 60))
+            }
+            
+            let imgArrow = UIImageView.init(image: UIImage.init(named: "arrow"))
+            btn.addSubview(imgArrow)
+            imgArrow.contentMode = .center
+            imgArrow.snp.makeConstraints { (make) in
+                make.width.height.equalTo(30)
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().offset(SCALE(size: -10))
+            }
+            
+            
+            temView = btn
+            if index == 0
+            {
+                btn.phAddTarget(events: .touchUpInside) { (sender) in
+//                    self.view.makeToast("\(PHTool.getCacheSize())",position:.center)
+                    
+                    self.view.makeToastActivity(.center)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
+                        PHTool.removeCache(callBack: { (success) in
+                            self.view.makeToast("清除成功",position:.center)
+                            self.view.hideToastActivity()
+                        })
+                    })
+                    
+     
+                }
+                
+                
+            }
+            if index == 1
+            {
+                
+            }
+            if index == 2
+            {
+                btn.phAddTarget(events: .touchUpInside) { (sender) in
+                    let webVC = PHBaseWebViewController.init()
+           
+                    let fileURL =  Bundle.main.url(forResource: "aboutus", withExtension: "html" )
+                    webVC.webView.loadFileURL(fileURL!,allowingReadAccessTo:Bundle.main.bundleURL);
+                    webVC.navigationItem.title = "关于我们"
+                    
+                    
+                    self.view.makeToastActivity(.center)
+                    Request.getAboutUs(response: { (success, msg, data) -> (Void) in
+                        self.view.hideToastActivity()
+                        if success {
+                            let letus : Dictionary<String,Any> = data["letus"] as! Dictionary<String,Any>
+                            let content : String = letus["letus_content"] as! String
+                            
+                            webVC.webView.loadHTMLString(self.getAboutus(content: content), baseURL: nil)
+                            self.navigationController?.pushViewController(webVC, animated: true)
+                        }else{
+                            self.view.makeToast(msg,position:.center)
+                        }
+       
+                    })
+              
+                    
+        
+//                    webVC.webView.load(URLRequest.init(url:URL.init(string: "https://www.baidu.com")!))
+                    
+                    
+                    
+                  
+                }
+            }
+        }
 
     }
     /*
@@ -54,5 +137,21 @@ extension MeViewController{
     @objc func setBtnClick() {
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
-    
+    func getAboutus(content:String) -> String {
+        return """
+        <html>
+        <head>
+        <title>关于我们</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        </head>
+        <body>
+        </br>
+        <div  style="text-align:center;text-color:orange">
+        \(content)
+        </div>
+        </body>
+        </html>
+        """
+    }
 }

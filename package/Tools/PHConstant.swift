@@ -27,15 +27,17 @@ func SCALE(size:CGFloat) -> CGFloat{
 extension UIColor{
     
     
-    open class var phBgContent: UIColor { get{ return UIColor.init(red: 239/255.0, green: 239/255.0, blue: 244/255.0, alpha: 1)} } //  背景颜色
+    open class var phBgContent: UIColor { get{ return UIColor.init(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1)} } //  背景颜色
     
 //    字体颜色
     ///  黑色字体
     open class var phBlackText: UIColor { get{ return UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)} } //
+    ///  浅灰色字体
+    open class var phLightGrayText: UIColor { get{ return UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.8)} } //
     ///  导航颜色
     open class var phNaviBg: UIColor { get{ return UIColor.init(red: 1, green: 1, blue: 1, alpha: 1)} }
     ///  导航字体
-    open class var phNaviTitle: UIColor { get{ return UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)} }
+    open class var phNaviTitle: UIColor { get { return UIColor.phBlackText}}
     
 }
 
@@ -71,5 +73,67 @@ extension PHConstant{
             UserDefaults.standard.set(newValue, forKey: "isLogin")
         }
     }
+    static func getRandomNumber(min:Int,max:Int) -> Int {
+        let randomNumber:Int = Int(arc4random_uniform(UInt32(max - min))) + min
+        return randomNumber
+    }
+}
+class PHTool: NSObject {
+    static func getCacheSize() ->Double{
+        
+        // 取出cache文件夹目录
+        let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first
+        
+        // 取出文件夹下所有文件数组
+        let fileArr = FileManager.default.subpaths(atPath: cachePath!)
+        
+        //快速枚举出所有文件名 计算文件大小
+        var size = 0
+        for file in fileArr! {
+            
+            // 把文件名拼接到路径中
+            let path = cachePath! + ("/\(file)")
+            // 取出文件属性
+            let floder = try! FileManager.default.attributesOfItem(atPath: path)
+            // 用元组取出文件大小属性
+            for (key, fileSize) in floder {
+                // 累加文件大小
+                if key == FileAttributeKey.size {
+                    size += (fileSize as AnyObject).integerValue
+                }
+            }
+        }
+        
+        let totalCache = Double(size) / 1024.00 / 1024.00
+        return totalCache
+    }
+    static func removeCache(callBack:((_ success:Bool)->())){
+        let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first
+        
+        let fileArr = FileManager.default.subpaths(atPath: cachePath!)
+        
+        // 遍历删除
+        
+        for file in fileArr! {
+            
+            let path = (cachePath! as NSString).appending("/\(file)")
+            
+            if FileManager.default.fileExists(atPath: path) {
+                
+                do {
+                    
+                    try FileManager.default.removeItem(atPath: path)
     
+                } catch {
+                    
+                    
+                    
+                }
+                
+            }
+            
+        }
+        callBack(true)
+
+    }
 }

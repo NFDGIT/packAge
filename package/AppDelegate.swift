@@ -86,8 +86,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate
 {
     func switchRootVC()  {
+        PHConstant.isLogin = true
+        
         if PHConstant.isLogin {
-            let tabbar = UITabBarController.init(params:[("","","首页",ViewController()),("","","找司仪",FindViewController()),("","","我的",MeViewController())])
+            let tabbar = UITabBarController.init(params:[("首页","首页1","首页",UIColor.phLightGrayText,UIColor.appTheme,ViewController()),
+                                                         ("浏览器","浏览器1","找房",UIColor.phLightGrayText,UIColor.appTheme,FindViewController()),
+                                                         ("个人","个人1","我的",UIColor.phLightGrayText,UIColor.appTheme,MeViewController())])
             self.window?.rootViewController = tabbar
         }
         else
