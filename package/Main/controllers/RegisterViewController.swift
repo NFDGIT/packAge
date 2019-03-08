@@ -78,19 +78,19 @@ class RegisterViewController: BaseViewController {
                 return
             }
             
-            let model = GoodsInfo.init()
+//            let model = GoodsInfo.init()
             
-        
-            model.phone = tfName.text!
-            model.name  = tfName.text!
-            model.password = tfPwd.text!
-            
-            Request.register(goodsInfo: model, response: { (success, msg, data) -> (Void) in
-                if success {
-                    self.navigationController?.popViewController(animated: true)
-                }
-                print("\(msg)")
-            })
+//        
+//            model.phone = tfName.text!
+//            model.name  = tfName.text!
+//            model.password = tfPwd.text!
+//            
+//            Request.register(goodsInfo: model, response: { (success, msg, data) -> (Void) in
+//                if success {
+//                    self.navigationController?.popViewController(animated: true)
+//                }
+//                print("\(msg)")
+//            })
             
             
 //            self.navigationController?.popViewController(animated: true)

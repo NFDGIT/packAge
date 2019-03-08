@@ -25,7 +25,12 @@ class UserCellView: UIView {
     func initUI() {
         self.backgroundColor = UIColor.white
         
+        
+        
         self.addSubview(imgView)
+        imgView.backgroundColor = UIColor.phBgContent
+        imgView.phLayer(cornerRadius: SCALE(size: 35), borderWidth: 0)
+        
         self.addSubview(labelTitle)
         labelTitle.textColor = UIColor.phBlackText
         labelTitle.font = UIFont.phMiddle
@@ -39,7 +44,7 @@ class UserCellView: UIView {
     func layout()  {
         self.imgView.snp.makeConstraints { (make) in
             make.left.top.equalToSuperview().offset(SCALE(size: 10))
-            make.width.height.equalTo(SCALE(size: 60))
+            make.width.height.equalTo(SCALE(size: 70))
             make.bottom.equalToSuperview().offset(SCALE(size: -10))
         }
         

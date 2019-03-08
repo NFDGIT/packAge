@@ -83,6 +83,11 @@ class MeViewController: BaseViewController {
             }
             if index == 1
             {
+                btn.phAddTarget(events: .touchUpInside) { (sender) in
+                    let url = URL.init(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=\("1454804219")")
+                    UIApplication.shared.openURL(url!)
+                }
+
                 
             }
             if index == 2
@@ -100,7 +105,12 @@ class MeViewController: BaseViewController {
                         self.view.hideToastActivity()
                         if success {
                             let letus : Dictionary<String,Any> = data["letus"] as! Dictionary<String,Any>
-                            let content : String = letus["letus_content"] as! String
+                            var content : String = letus["letus_content"] as! String
+                            content = """
+                                          龙之美装饰是一家装修设计公司，专业提供精美设计方案<br/>
+                                          设计行业领航者
+                                      """
+                            
                             
                             webVC.webView.loadHTMLString(self.getAboutus(content: content), baseURL: nil)
                             self.navigationController?.pushViewController(webVC, animated: true)

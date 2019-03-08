@@ -80,16 +80,14 @@ class LoginViewController: BaseViewController {
                 self.view.makeToast("密码不能为空",position:.center)
                 return
             }
-            
-
-            
-            Request.login(userName: tfName.text!, password: tfPwd.text!, response: { (success, msg, data) -> (Void) in
-                print("\(msg)")
-                if success {
-                    PHConstant.isLogin = true;
-                    (UIApplication.shared.delegate as! AppDelegate).switchRootVC()
-                }
-            })
+        
+//            Request.login(userName: tfName.text!, password: tfPwd.text!, response: { (success, msg, data) -> (Void) in
+//                print("\(msg)")
+//                if success {
+//                    PHConstant.isLogin = true;
+//                    (UIApplication.shared.delegate as! AppDelegate).switchRootVC()
+//                }
+//            })
             
     
         }

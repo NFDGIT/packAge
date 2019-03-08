@@ -88,10 +88,15 @@ extension AppDelegate
     func switchRootVC()  {
         PHConstant.isLogin = true
         
+        
+        
         if PHConstant.isLogin {
-            let tabbar = UITabBarController.init(params:[("首页","首页1","首页",UIColor.phLightGrayText,UIColor.appTheme,ViewController()),
-                                                         ("浏览器","浏览器1","找房",UIColor.phLightGrayText,UIColor.appTheme,FindViewController()),
-                                                         ("个人","个人1","我的",UIColor.phLightGrayText,UIColor.appTheme,MeViewController())])
+            let tabbar = PHBaseTabBarController.init(params:[("首页","首页1","首页",UIColor.phLightGrayText,UIColor.appTheme,QYMainViewController()),
+                                                         ("消息","消息1","信息",UIColor.phLightGrayText,UIColor.appTheme,QYMessageViewController()),
+                                                        ("朋友圈","朋友圈1","社区",UIColor.phLightGrayText,UIColor.appTheme,QYMomentViewController()),
+                                                        ("预约","预约1","预约",UIColor.phLightGrayText,UIColor.appTheme,QYReserveViewController()),
+                                                  
+                                                         ("设置","设置1","设置",UIColor.phLightGrayText,UIColor.appTheme,MeViewController())])
             self.window?.rootViewController = tabbar
         }
         else
