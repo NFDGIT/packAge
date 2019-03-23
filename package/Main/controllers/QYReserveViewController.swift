@@ -10,7 +10,7 @@ import UIKit
 import MJRefresh
 
 class QYReserveViewController: BaseViewController ,UICollectionViewDelegate,UICollectionViewDataSource{
-    var data : Array<QYGoodsModel> = Array.init()
+    var data : Array<ZYGoodsModel> = Array.init()
     var collectionView : UICollectionView?
     
     override init() {
@@ -36,7 +36,7 @@ class QYReserveViewController: BaseViewController ,UICollectionViewDelegate,UICo
     
     override func initNavi() {
         super.initNavi()
-        self.navigationItem.title = "预约"
+        self.navigationItem.title = "购物车"
     }
     
     override func initUI() {
@@ -62,7 +62,7 @@ class QYReserveViewController: BaseViewController ,UICollectionViewDelegate,UICo
         collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView!.delegate = self
         collectionView!.dataSource = self
-        collectionView!.register(QYGoodsCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cell")
+        collectionView!.register(ZYGoodsCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cell")
         collectionView!.backgroundColor = UIColor.clear
         self.view.addSubview(collectionView!)
         collectionView!.snp.makeConstraints { (make) in
@@ -89,7 +89,7 @@ class QYReserveViewController: BaseViewController ,UICollectionViewDelegate,UICo
             if success {
                 for dataitem in data
                 {
-                    let model = QYGoodsModel.init(dic: dataitem as! Dictionary<String, Any>)
+                    let model = ZYGoodsModel.init(dic: dataitem as! Dictionary<String, Any>)
 
                     for reserver in Request.reserverList
                     {
@@ -130,7 +130,7 @@ extension QYReserveViewController{
         return self.data.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : QYGoodsCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! QYGoodsCollectionViewCell
+        let cell : ZYGoodsCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ZYGoodsCollectionViewCell
         cell.model = self.data[indexPath.section]
         
 
@@ -139,7 +139,7 @@ extension QYReserveViewController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = self.data[indexPath.section]
         
-        let detail = QYDetailViewController.init()
+        let detail = ZYDetailViewController.init()
         detail.model = model
         
         self.navigationController?.pushViewController(detail, animated: true)

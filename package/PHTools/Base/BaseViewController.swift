@@ -17,6 +17,8 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate  {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = UIColor.phNaviTitle
         self.navigationController?.navigationBar.barTintColor = UIColor.phNaviBg
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        
         
         
         self.view.backgroundColor = UIColor.phBgContent
@@ -43,7 +45,7 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate  {
 
     override var preferredStatusBarStyle: UIStatusBarStyle
     {
-        return .default
+        return .lightContent
     }
 }
 

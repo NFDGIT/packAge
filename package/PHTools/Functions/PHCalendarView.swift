@@ -87,7 +87,7 @@ class PHCalendarView: UIView {
         
         
         let layout = PHLayout.init()
-        layout.type = .collection
+
         layout.column = 7
         layoutview.layout = layout
         

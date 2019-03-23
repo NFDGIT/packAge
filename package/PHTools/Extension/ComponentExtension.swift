@@ -201,14 +201,36 @@ extension UIButton{
         }
     }
     func phAddTarget(events:UIControlEvents, callBack:@escaping ((UIButton)->()))  {
-        self.addTarget(self, action: #selector(temMethod(sender:)), for: events)
+        self.addTarget(self, action: #selector(method(sender:)), for: events)
         self.eventCallBack = { sender in
             callBack(sender)
         }
     }
-    @objc private func temMethod(sender:UIButton)  {
+    @objc private func method(sender:UIButton)  {
         self.eventCallBack!(sender)
     }
+}
+extension UIScrollView{
+    func addEmptyView(emptyView:UIView)  {
+        emptyView.tag = 100001
+        emptyView.isHidden = true
+        self.addSubview(emptyView)
+        self.bringSubview(toFront: emptyView)
+        emptyView.snp.makeConstraints { (make) in
+            make.left.top.equalToSuperview()
+            make.width.height.equalToSuperview()
+        }
+    }
+    func setIsEmpty(isEmpty:Bool) {
+        let emptyView = self.viewWithTag(100001)
+        if  emptyView != nil {
+            emptyView?.isHidden = !isEmpty
+        }
+        
+
+    }
+
+    
 }
 extension UIView{
 
@@ -252,11 +274,27 @@ extension UITableViewCell{
     }
 }
 
+struct UICollectionViewCellAssociatedKeys {
+    static var indexPath: String = "indexPath"
+}
+extension UICollectionViewCell{
+    var indexPath: IndexPath? {
+        get {
+            return (objc_getAssociatedObject(self, &UICollectionViewCellAssociatedKeys.indexPath) as! IndexPath)
+        }
+        set {
+            objc_setAssociatedObject(self, &UICollectionViewCellAssociatedKeys.indexPath, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+
+
+
 extension UIImage{
     
        static func phInit(color:UIColor) -> UIImage {
         
-        let rect: CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let rect: CGRect = CGRect(x: 0, y: 0, width: 10, height: 10)
         
         UIGraphicsBeginImageContext(rect.size)
         

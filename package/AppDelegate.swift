@@ -11,7 +11,7 @@ import CoreData
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,UITabBarControllerDelegate{
 
     var window: UIWindow?
 
@@ -86,25 +86,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate
 {
     func switchRootVC()  {
-        PHConstant.isLogin = true
+
         
-        
-        
-        if PHConstant.isLogin {
-            let tabbar = PHBaseTabBarController.init(params:[("首页","首页1","首页",UIColor.phLightGrayText,UIColor.appTheme,QYMainViewController()),
-                                                         ("消息","消息1","信息",UIColor.phLightGrayText,UIColor.appTheme,QYMessageViewController()),
-                                                        ("朋友圈","朋友圈1","社区",UIColor.phLightGrayText,UIColor.appTheme,QYMomentViewController()),
-                                                        ("预约","预约1","预约",UIColor.phLightGrayText,UIColor.appTheme,QYReserveViewController()),
-                                                  
-                                                         ("设置","设置1","设置",UIColor.phLightGrayText,UIColor.appTheme,MeViewController())])
+//        if PHConstant.isLogin {
+            let tabbar = PHBaseTabBarController.init(params:[("首页","首页1","首页",UIColor.phLightGrayText,UIColor.appTheme,ZYMainViewController()),
+                                                         ("分类","分类1","分类",UIColor.phLightGrayText,UIColor.appTheme,ZYCategoryViewController()),
+                                                        ("购物车","购物车1","购物车",UIColor.phLightGrayText,UIColor.appTheme,ZYCarViewController()),
+                                                         ("我的","我的1","我的",UIColor.phLightGrayText,UIColor.appTheme,ZYMeViewController())])
+            tabbar.delegate = self
             self.window?.rootViewController = tabbar
-        }
-        else
-        {
-            let navi = BaseNavigationController.init(rootViewController: LoginViewController())
-            self.window?.rootViewController = navi
-        }
-        
         
     }
     func setup()  {
@@ -112,5 +102,27 @@ extension AppDelegate
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
     }
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        
+        if ((viewController as! UINavigationController).topViewController?.isKind(of: ZYMeViewController.classForCoder()))!
+        {
+            return self.login();
+        }
+        return true
+    }
     
+    func login() -> Bool {
+        if Request.getLocalUserInfo().keys.count <= 0
+        {
+            self.window?.rootViewController?.present(UINavigationController.init(rootViewController: ZYLoginViewController()), animated: true, completion: {
+            })
+            return false
+        }
+        return true
+    }
+    func logout()  {
+        Request.setLocalUserInfo(userInfo: Dictionary.init())
+        (self.window?.rootViewController as! PHBaseTabBarController).selectedIndex = 0
+    }
 }

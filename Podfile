@@ -16,5 +16,6 @@ pod 'Toast-Swift', '~> 3.0.1'
 #pod 'RealmSwift', '3.3.2'
 #OC
 pod 'MJRefresh', '~> 3.1.15.7'
+pod 'WebViewJavascriptBridge', '~> 6.0.3'
 
 end

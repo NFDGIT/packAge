@@ -30,14 +30,17 @@ extension UIColor{
     open class var phBgContent: UIColor { get{ return UIColor.init(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1)} } //  背景颜色
     
 //    字体颜色
+    
+    /// 红色
+    open class var phRed: UIColor { get{ return UIColor.init(red: 231/255.0, green: 41/255.0, blue: 47/255.0, alpha: 1)} } //
     ///  黑色字体
     open class var phBlackText: UIColor { get{ return UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)} } //
     ///  浅灰色字体
     open class var phLightGrayText: UIColor { get{ return UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.8)} } //
     ///  导航颜色
-    open class var phNaviBg: UIColor { get{ return UIColor.white} }
+    open class var phNaviBg: UIColor { get{ return UIColor.appTheme} }
     ///  导航字体
-    open class var phNaviTitle: UIColor { get { return UIColor.phBlackText}}
+    open class var phNaviTitle: UIColor { get { return UIColor.white}}
     
 }
 
