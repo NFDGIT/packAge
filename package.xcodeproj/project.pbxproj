@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -70,6 +70,8 @@
 		84B4310E2227867100DCCB11 /* aboutus.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B4310D2227867100DCCB11 /* aboutus.html */; };
 		84B4310F22278C9800DCCB11 /* aboutus.html in Sources */ = {isa = PBXBuildFile; fileRef = 84B4310D2227867100DCCB11 /* aboutus.html */; };
 		84B431122229240000DCCB11 /* PHPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B431112229240000DCCB11 /* PHPhotoBrowser.swift */; };
+		E26E412C2468030C0039F66F /* PHCryptoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E412B2468030C0039F66F /* PHCryptoTool.swift */; };
+		E26E4133246803A60039F66F /* PHCryptoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E26E4132246803A60039F66F /* PHCryptoTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +163,10 @@
 		84B4310722265F8900DCCB11 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		84B4310D2227867100DCCB11 /* aboutus.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = aboutus.html; sourceTree = "<group>"; };
 		84B431112229240000DCCB11 /* PHPhotoBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPhotoBrowser.swift; sourceTree = "<group>"; };
+		E26E412B2468030C0039F66F /* PHCryptoTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHCryptoTool.swift; sourceTree = "<group>"; };
+		E26E412D2468036C0039F66F /* package-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "package-Bridging-Header.h"; sourceTree = "<group>"; };
+		E26E4131246803A60039F66F /* PHCryptoTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PHCryptoTool.h; sourceTree = "<group>"; };
+		E26E4132246803A60039F66F /* PHCryptoTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PHCryptoTool.m; sourceTree = "<group>"; };
 		F35821FDBF23D0C91AD989F1 /* Pods_package.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_package.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -232,6 +238,7 @@
 				848814152212A64B0001EBB0 /* LaunchScreen.storyboard */,
 				848814182212A64B0001EBB0 /* Info.plist */,
 				848814102212A64A0001EBB0 /* package.xcdatamodeld */,
+				E26E412D2468036C0039F66F /* package-Bridging-Header.h */,
 			);
 			path = package;
 			sourceTree = "<group>";
@@ -365,6 +372,7 @@
 		84B431102229207800DCCB11 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				E26E412A2468029D0039F66F /* PHCrypto */,
 				84472454222CCF02002740A2 /* PHPlayerView.swift */,
 				84881469221704660001EBB0 /* PHTextField.swift */,
 				8488143A2212A6780001EBB0 /* PHConstant.swift */,
@@ -386,6 +394,16 @@
 				01144A11B17664334FD2DEB0 /* Pods_packageUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E26E412A2468029D0039F66F /* PHCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				E26E412B2468030C0039F66F /* PHCryptoTool.swift */,
+				E26E4131246803A60039F66F /* PHCryptoTool.h */,
+				E26E4132246803A60039F66F /* PHCryptoTool.m */,
+			);
+			path = PHCrypto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,6 +476,7 @@
 				TargetAttributes = {
 					848814052212A64A0001EBB0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 					};
 					8488141C2212A64B0001EBB0 = {
 						CreatedOnToolsVersion = 10.1;
@@ -546,34 +565,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-package/Pods-package-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-package/Pods-package-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-package/Pods-package-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-package/Pods-package-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-package/Pods-package-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -584,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B4310F22278C9800DCCB11 /* aboutus.html in Sources */,
+				E26E412C2468030C0039F66F /* PHCryptoTool.swift in Sources */,
 				8447245E222E1F38002740A2 /* ZYCommentViewController.swift in Sources */,
 				8493FE0B221AAE69006078A0 /* VideoRecording1ViewController.swift in Sources */,
 				84472455222CCF02002740A2 /* PHPlayerView.swift in Sources */,
@@ -608,6 +609,7 @@
 				84B431122229240000DCCB11 /* PHPhotoBrowser.swift in Sources */,
 				848814402212A6DA0001EBB0 /* PHBaseWebViewController.swift in Sources */,
 				848814612215602B0001EBB0 /* NetTool.swift in Sources */,
+				E26E4133246803A60039F66F /* PHCryptoTool.m in Sources */,
 				8465F7EF22352E0300F91ECF /* ZYCarViewController.swift in Sources */,
 				8488143E2212A6AC0001EBB0 /* BaseViewController.swift in Sources */,
 				8465F7FD22377F0400F91ECF /* ZYOrderModel.swift in Sources */,
@@ -814,6 +816,7 @@
 			baseConfigurationReference = 3434EA8EB5D434CE855BFD6D /* Pods-package.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EXEV76R45;
 				INFOPLIST_FILE = package/Info.plist;
@@ -824,6 +827,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.package;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "package/package-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -834,6 +839,7 @@
 			baseConfigurationReference = 5FC68162359898F6251C3699 /* Pods-package.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EXEV76R45;
 				INFOPLIST_FILE = package/Info.plist;
@@ -844,6 +850,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.package;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "package/package-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

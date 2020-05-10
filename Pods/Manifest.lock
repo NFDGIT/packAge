@@ -19,7 +19,7 @@ DEPENDENCIES:
   - WebViewJavascriptBridge (~> 6.0.3)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - IQKeyboardManagerSwift
     - Kingfisher
@@ -41,4 +41,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2a3c7744c15ffdee4e2d2893adfa7805a090534e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
