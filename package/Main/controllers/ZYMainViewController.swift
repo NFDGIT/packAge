@@ -34,14 +34,20 @@ class ZYMainViewController: BaseViewController {
         super.init(coder: aDecoder)
     }
     override func viewDidLoad() {
-        
-    
         super.viewDidLoad()
+        
         self.initNavi()
         
         self.initUI()
         self.refreshData()
    
+        
+        let crypto = PHCryptoTool.shared();
+        let result = crypto.encryptString("hello", keyString: "abc", iv: nil);
+        
+        let resul1 = crypto.decryptString(result, keyString: "abc", iv: nil);
+        
+        
         
 //        let context = JSContext();
 //        context?.exceptionHandler = { (jsContext:JSContext!,exception:JSValue!) ->Void in
@@ -308,5 +314,16 @@ class ZYMainViewController: BaseViewController {
     
 }
 extension ZYMainViewController{
- 
+    func reverse(x:Int) -> Int {
+        let xString : String = "\(x)"
+        let isSign = xString.contains("-") || xString.contains("+")
+        let count : Int = xString.count - (isSign ? 1 : 0) / 2
+        
+        
+        for index in 0..<count {
+
+        }
+
+        return  Int(xString)!
+    }
 }

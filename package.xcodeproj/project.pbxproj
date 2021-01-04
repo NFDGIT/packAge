@@ -70,7 +70,6 @@
 		84B4310E2227867100DCCB11 /* aboutus.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B4310D2227867100DCCB11 /* aboutus.html */; };
 		84B4310F22278C9800DCCB11 /* aboutus.html in Sources */ = {isa = PBXBuildFile; fileRef = 84B4310D2227867100DCCB11 /* aboutus.html */; };
 		84B431122229240000DCCB11 /* PHPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B431112229240000DCCB11 /* PHPhotoBrowser.swift */; };
-		E26E412C2468030C0039F66F /* PHCryptoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E412B2468030C0039F66F /* PHCryptoTool.swift */; };
 		E26E4133246803A60039F66F /* PHCryptoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E26E4132246803A60039F66F /* PHCryptoTool.m */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +89,19 @@
 			remoteInfo = package;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E2289CA62489ED440076D837 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01144A11B17664334FD2DEB0 /* Pods_packageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_packageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +175,6 @@
 		84B4310722265F8900DCCB11 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		84B4310D2227867100DCCB11 /* aboutus.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = aboutus.html; sourceTree = "<group>"; };
 		84B431112229240000DCCB11 /* PHPhotoBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPhotoBrowser.swift; sourceTree = "<group>"; };
-		E26E412B2468030C0039F66F /* PHCryptoTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHCryptoTool.swift; sourceTree = "<group>"; };
 		E26E412D2468036C0039F66F /* package-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "package-Bridging-Header.h"; sourceTree = "<group>"; };
 		E26E4131246803A60039F66F /* PHCryptoTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PHCryptoTool.h; sourceTree = "<group>"; };
 		E26E4132246803A60039F66F /* PHCryptoTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PHCryptoTool.m; sourceTree = "<group>"; };
@@ -399,7 +410,6 @@
 		E26E412A2468029D0039F66F /* PHCrypto */ = {
 			isa = PBXGroup;
 			children = (
-				E26E412B2468030C0039F66F /* PHCryptoTool.swift */,
 				E26E4131246803A60039F66F /* PHCryptoTool.h */,
 				E26E4132246803A60039F66F /* PHCryptoTool.m */,
 			);
@@ -418,6 +428,7 @@
 				848814032212A64A0001EBB0 /* Frameworks */,
 				848814042212A64A0001EBB0 /* Resources */,
 				603D907FBA92A60524F2CCEC /* [CP] Embed Pods Frameworks */,
+				E2289CA62489ED440076D837 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -584,7 +595,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B4310F22278C9800DCCB11 /* aboutus.html in Sources */,
-				E26E412C2468030C0039F66F /* PHCryptoTool.swift in Sources */,
 				8447245E222E1F38002740A2 /* ZYCommentViewController.swift in Sources */,
 				8493FE0B221AAE69006078A0 /* VideoRecording1ViewController.swift in Sources */,
 				84472455222CCF02002740A2 /* PHPlayerView.swift in Sources */,
@@ -818,14 +828,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9EXEV76R45;
+				DEVELOPMENT_TEAM = GL9THTMKLZ;
 				INFOPLIST_FILE = package/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.package;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulcy.package;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "package/package-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -841,14 +851,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9EXEV76R45;
+				DEVELOPMENT_TEAM = GL9THTMKLZ;
 				INFOPLIST_FILE = package/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.package;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulcy.package;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "package/package-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

@@ -83,5 +83,16 @@ class PHPlayerView: UIView {
         // Drawing code
     }
     */
+    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+        var map : Dictionary = Dictionary<Int, Int>.init()
+        for (index,value) in nums.enumerated() {
+            let component  = target - value;
+            if map.keys.contains(component) {
+                return [map[component]!,index]
+            }
+            map.updateValue(value, forKey: index)
+        }
+        return []
+    }
 
 }
